@@ -1,12 +1,12 @@
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NzI3Nzc2MjZ9.Ctx_H-xV_p3HveLQb4xv2w9zznYtmI93Uvb7QOA-iOg
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE2NzI4NjE0NjN9.e6xiCB6I23fkj8VOmUDD78olr2FrLJQpCueXonGGU6E
 
 ### Users create (signup)
 POST http://localhost:3000/users.json
 Content-Type: application/json
 
 {
-  "name": "Christine",
-  "email": "christine@test.com",
+  "name": "Sam",
+  "email": "s@test.com",
   "password": "password",
   "password_confirmation": "password"
 }
@@ -16,18 +16,17 @@ POST http://localhost:3000/sessions.json
 Content-Type: application/json
 
 {
-  "email": "christine@test.com",
+  "email": "s@test.com",
   "password": "password"
 }
 
 ### Movies create
 POST http://localhost:3000/movies.json
-Authorization: Bearer {{jwt}}
 Content-Type: application/json
+Authorization: Bearer {{jwt}}
 
 {
-  "name": "Avatar: The Way of Water",
-  "image_url": "https://a.ltrbxd.com/resized/film-poster/6/3/0/5/8/63058-avatar-the-way-of-water-0-1000-0-1500-crop.jpg?v=37a1014065",
-  "description": "RETURN TO PANDORA.
-Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure."
+  "title": "test title",
+  "image_url": "test image",
+  "description": "test description"
 }

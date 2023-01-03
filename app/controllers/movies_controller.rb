@@ -10,37 +10,36 @@ class MoviesController < ApplicationController
     movie = Movie.new(
       user_id: current_user.id,
       title: params[:title],
-      body: params[:body],
-      image: params[:image],
+      description: params[:description],
+      image_url: params[:image_url],
     )
-    if post.save
-      render json: post
+    if movie.save
+      render json: movie
     else
-      render json: { errors: post.errors.full_messages }, status: :bad_request
+      render json: { errors: movie.errors.full_messages }, status: :bad_request
     end
   end
 
   def show
-    post = Post.find_by(id: params[:id])
-    render json: post
+    movie = Movie.find_by(id: params[:id])
+    render json: movie
   end
 
   def update
-    post = Post.find_by(id: params[:id])
-    post.title = params[:title] || post.title
-    post.body = params[:body] || post.body
-    post.image = params[:image] || post.image
-    if post.save
-      render json: post
+    movie = Movie.find_by(id: params[:id])
+    movie.title = params[:title] || movie.title
+    movie.description = params[:description] || movie.description
+    movie.image_url = params[:image_url] || movie.image_url
+    if movie.save
+      render json: movie
     else
-      render json: { errors: post.errors.full_messages }, status: :bad_request
+      render json: { errors: movie.errors.full_messages }, status: :bad_request
     end
   end
 
   def destroy
-    post = Post.find_by(id: params[:id])
-    post.destroy
-    render json: { message: "Post successfully destroyed!" }
+    movie = Movie.find_by(id: params[:id])
+    movie.destroy
+    render json: { message: "Movie successfully destroyed!" }
   end
-end
 end
