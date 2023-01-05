@@ -1,12 +1,12 @@
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE2NzI4NjE0NjN9.e6xiCB6I23fkj8VOmUDD78olr2FrLJQpCueXonGGU6E
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NzI5NjI5NDJ9.oAmELNjitQN6Kjye66NFEtDUgqvW2-U1zcW1cZRuVl0
 
 ### Users create (signup)
 POST http://localhost:3000/users.json
 Content-Type: application/json
 
 {
-  "name": "Sam",
-  "email": "s@test.com",
+  "name": "Ann",
+  "email": "a@test.com",
   "password": "password",
   "password_confirmation": "password"
 }
@@ -16,7 +16,7 @@ POST http://localhost:3000/sessions.json
 Content-Type: application/json
 
 {
-  "email": "s@test.com",
+  "email": "d@test.com",
   "password": "password"
 }
 
@@ -26,7 +26,60 @@ Content-Type: application/json
 Authorization: Bearer {{jwt}}
 
 {
-  "title": "test title",
-  "image_url": "test image",
-  "description": "test description"
+  "title": "movie 7",
+  "year": "test 6",
+  "imdbID": "test 6",
+  "poster": "test 6"
 }
+
+### Movies index
+GET http://localhost:3000/movies.json
+
+### Movies show
+GET http://localhost:3000/movies/8.json
+
+### Movies update
+PATCH http://localhost:3000/movies/8
+Authorization: Bearer {{jwt}}
+Content-Type: application/json
+
+{
+  "title": "test2"
+}
+
+### Movies destory
+DELETE http://localhost:3000/movies/8
+Authorization: Bearer {{jwt}}
+
+### Favorites create
+POST http://localhost:3000/favorites.json
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+  "movie_id": 4
+}
+
+### Favorites index
+GET http://localhost:3000/favorites
+
+### Favorites show
+GET http://localhost:3000/favorites/3.json
+
+# ### Favorites update
+# PATCH http://localhost:3000/favorites/3
+# Authorization: Bearer {{jwt}}
+# Content-Type: application/json
+
+# {
+#   "image_url": "testtesttest"
+# }
+
+### Favorites destory
+DELETE http://localhost:3000/favorites/1
+Authorization: Bearer {{jwt}}
+
+### 
+curl --request GET \
+  --url 'https://api.themoviedb.org/4/movie?api_key=8856f48be68d7285c433496838dbffb4' \
+  --header 'Content-Type: application/json;charset=utf-8'

@@ -2,16 +2,16 @@ class MoviesController < ApplicationController
   before_action :authenticate_user, except: [:index, :show]
 
   def index
-    movies = Movie.all.order(:id)
+    movies = Movie.all
     render json: movies
   end
 
   def create
     movie = Movie.new(
-      user_id: current_user.id,
       title: params[:title],
-      description: params[:description],
-      image_url: params[:image_url],
+      year: params[:year],
+      imdbID: params[:imdbID],
+      poster: params[:poster],
     )
     if movie.save
       render json: movie
@@ -28,8 +28,9 @@ class MoviesController < ApplicationController
   def update
     movie = Movie.find_by(id: params[:id])
     movie.title = params[:title] || movie.title
-    movie.description = params[:description] || movie.description
-    movie.image_url = params[:image_url] || movie.image_url
+    movie.year = params[:year] || movie.year
+    movie.imdbID = params[:imdbID] || movie.imdbID
+    movie.poster = params[:poster] || movie.poster
     if movie.save
       render json: movie
     else
