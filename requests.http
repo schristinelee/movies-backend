@@ -1,4 +1,4 @@
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE2NzMxMTk5MjB9.Z9wD51nA72EDSU8pb9cKbCxbG8Ymg97FAfbUOJEn09k
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE2NzM1MDQxODV9.yNvPLw30zDvr397xfmkspS3PYW4rFcTvokj94vaYoyg
 
 ### Users create (signup)
 POST http://localhost:3000/users.json
@@ -57,7 +57,8 @@ Content-Type: application/json
 Authorization: Bearer {{jwt}}
 
 {
-  "movie_id": 4
+  "user_id": 7,
+  "id": 2
 }
 
 ### Favorites index

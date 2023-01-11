@@ -48,3 +48,5 @@ end
 
 gem 'jwt'
 gem 'http'
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'httparty'
