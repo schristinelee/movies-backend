@@ -2,8 +2,8 @@ class MoviesController < ApplicationController
   before_action :authenticate_user, except: [:index, :show]
 
   def index
-    movies = Movie.all
-    render json: movies
+    movies = HTTP.get("https://api.themoviedb.org/3/trending/movie/week?api_key=8856f48be68d7285c433496838dbffb4")
+    render json: movies.parse(:json)["results"]
   end
 
   def create
@@ -28,9 +28,8 @@ class MoviesController < ApplicationController
   def update
     movie = Movie.find_by(id: params[:id])
     movie.title = params[:title] || movie.title
-    movie.year = params[:year] || movie.year
-    movie.imdbID = params[:imdbID] || movie.imdbID
-    movie.poster = params[:poster] || movie.poster
+    movie.overview = params[:overview] || movie.overview
+    movie.poster_path = params[:poster_path] || movie.poster_path
     if movie.save
       render json: movie
     else
